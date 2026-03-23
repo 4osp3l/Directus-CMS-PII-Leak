@@ -1,0 +1,25 @@
+id: CVE-2025-55746
+
+info:
+  name: Directus User PII Leak
+  author: 4osp3l
+  severity: high
+  description: Detects Directus CMS instances that expose sensitive user data via the unauthenticated /users endpoint.
+  metadata:
+    cvss-score: 7.5
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+      - "{{BaseURL}}/users"
+
+    extractors:
+      - type: dsl
+        dsl:
+          - "''"
+
+      - type: regex
+        part: body_2
+        regex:
+          - '"email"\s*:\s*"[^"]*"'
