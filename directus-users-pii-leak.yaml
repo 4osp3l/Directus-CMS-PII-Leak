@@ -13,6 +13,7 @@ http:
     path:
       - "{{BaseURL}}"
       - "{{BaseURL}}/users"
+      - "{{BaseURL}}/cms/users
 
     extractors:
       - type: dsl
